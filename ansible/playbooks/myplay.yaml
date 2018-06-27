@@ -1,0 +1,11 @@
+---
+- name: This is my first play
+  hosts: mylocal
+  tasks:
+    - name: This is the first task
+      shell: ifconfig
+      register: ipout
+
+    - name: Show IP
+      debug:
+        msg:  "{{ipout.stdout_lines}}"
