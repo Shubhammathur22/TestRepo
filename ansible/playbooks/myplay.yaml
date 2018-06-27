@@ -3,7 +3,7 @@
   hosts: mylocal
   tasks:
     - name: Initialize a terraform
-      shell: ./terraform plan -input=false
+      shell: ./terraform apply -input=false -auto-approve
       args:
         chdir: /home/shubham/terraform_files
       become: true
