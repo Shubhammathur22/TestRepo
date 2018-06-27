@@ -2,10 +2,13 @@
 - name: This is my first play
   hosts: mylocal
   tasks:
-    - name: This is the first task
-      shell: ifconfig
-      register: ipout
+    - name: Initialize a terraform
+      shell: ./terraform plan -input=false
+      args:
+        chdir: /home/shubham/terraform_files
+      become: true
+      register: teraaout
 
-    - name: Show IP
+    - name: Show Terraform output
       debug:
-        msg:  "{{ipout.stdout_lines}}"
+        msg: "{{teraaout.stdout_lines}}"
